@@ -1,0 +1,8 @@
+Name,Region,Q1 Sales,Q2 Sales,Total,Status
+Alice Johnson,North,15000,18000,,Active
+Bob Smith,South,12000,14500,,Active
+Carol Davis,East,22000,19000,,On Leave
+Dan Wilson,West,8000,11000,,Active
+Eva Martinez,North,31000,28000,,Active
+Frank Lee,South,9500,10200,,Blocked
+Grace Kim,East,17000,21000,,Active

@@ -1,0 +1,89 @@
+# workbook.yaml — Example plexcel workbook config
+#
+# This file defines which CSV files become sheets, and how they're styled.
+# Run: python csv_to_xlsx.py output.xlsx workbook.yaml
+
+sheets:
+  # ─────────────────────────────────────────────
+  # Sheet 1: Team Directory
+  # Demonstrates: merged title, cell styles, row heights, wrap columns
+  # ─────────────────────────────────────────────
+  - csv: example-team.csv
+    name: Team
+    freeze_row: 3                       # Freeze title + description + header
+    auto_filter: row 3                  # Filter on the header row (row 3)
+
+    column_widths: {A: 18, B: 22, C: 25, D: 12, E: 35}
+    row_heights: {"1": 30, "2": 35}     # Taller title and description rows
+    wrap_columns: [E]                   # Wrap long notes
+
+    # Merge the title and description across all columns
+    merged_cells: [A1:E1, A2:E2]
+
+    # Apply named styles from styles.yaml
+    cell_styles:
+      A1:E1: header
+      A2:E2: description
+      A3:E3: subheader
+      A4: bold
+
+    # Role dropdown for new entries
+    dropdowns:
+      - range: B4:B100
+        values: Engineering Manager,Senior Developer,Developer,Junior Developer,DevOps Engineer
+
+  # ─────────────────────────────────────────────
+  # Sheet 2: Sales Report
+  # Demonstrates: formulas, number formats, conditional formatting, dropdowns
+  # ─────────────────────────────────────────────
+  - csv: example-sales.csv
+    name: Sales Report
+    freeze_pane: A2                     # Lock header row while scrolling
+    auto_filter: true                   # Enable column filter dropdowns
+
+    column_widths: {A: 18, B: 10, C: 12, D: 12, E: 12, F: 12}
+
+    # Calculate Total = Q1 + Q2 for each row
+    formulas:
+      - column: E
+        start_row: 2
+        formula: "=C{row}+D{row}"
+
+    # Format currency columns
+    number_formats:
+      - column: C
+        start_row: 2
+        format: "$#,##0"
+      - column: D
+        start_row: 2
+        format: "$#,##0"
+      - column: E
+        start_row: 2
+        format: "$#,##0"
+
+    # Dropdown for Status column
+    dropdowns:
+      - range: F2:F100
+        values: Active,On Leave,Blocked
+      - range: B2:B100
+        values: North,South,East,West
+
+    # Highlight rows by status
+    conditional_formatting:
+      - type: cell_is
+        range: F2:F100
+        operator: equal
+        formula: ['"Blocked"']
+        style: {fill_color: FFFF0000, font_color: FFFFFFFF}
+      - type: cell_is
+        range: F2:F100
+        operator: equal
+        formula: ['"On Leave"']
+        style: {fill_color: FFFFFF00}
+      - type: cell_is
+        range: F2:F100
+        operator: equal
+        formula: ['"Active"']
+        style: {fill_color: FF92D050}
+
+

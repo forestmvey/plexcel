@@ -1,0 +1,12 @@
+Team Directory,,,,
+Contact info for the engineering team. Updated monthly.,,,,
+Name,Role,Email,Start Date,Notes
+Alice Johnson,Engineering Manager,alice@example.com,2022-03-15,"• Leads backend team
+• Manages sprint planning
+• Hiring for 2 roles"
+Bob Smith,Senior Developer,bob@example.com,2021-06-01,"1. Python specialist
+2. Owns data pipeline
+3. Mentors junior devs"
+Carol Davis,Developer,carol@example.com,2023-01-10,Frontend focus
+Dan Wilson,Junior Developer,dan@example.com,2024-08-20,Onboarding complete
+Eva Martinez,DevOps Engineer,eva@example.com,2022-11-03,Manages CI/CD

@@ -1,0 +1,58 @@
+# styles.yaml — Global style definitions for plexcel
+#
+# This file lives at ~/.plexcel/styles.yaml (or in your project directory).
+# Styles defined here can be referenced by name in any workbook.yaml.
+#
+# Shorthand reference:
+#   font: [family] [size] [bold] [italic] [color]
+#   fill: "#RRGGBB" or color name
+#   align: [horizontal] [vertical] [wrap]
+#   border: [style] or {edge: style}
+
+# ─────────────────────────────────────────────
+# Defaults — applied to every cell unless overridden
+# ─────────────────────────────────────────────
+defaults:
+  font: Arial 10
+  row_height: 25.5
+  date_format: yyyy-mm-dd
+  align: left center
+  freeze_row: 1
+  auto_filter: true
+
+# ─────────────────────────────────────────────
+# Named styles — use these in workbook.yaml cell_styles
+# ─────────────────────────────────────────────
+styles:
+  # Dark blue background, white bold text — for sheet titles / row 1
+  header:
+    font: Arial 14 bold white
+    fill: "#1F3864"
+    align: center center
+    border: {bottom: thin}
+
+  # Medium blue background — for column headers below a title
+  subheader:
+    font: Arial 10 bold white
+    fill: "#2E5597"
+    align: center center
+    border: {bottom: thin}
+
+  # Italic text, top-aligned with wrapping — for description rows
+  description:
+    font: Arial 10 italic
+    align: left top wrap
+
+  # Light blue highlight — for important rows
+  highlight_row:
+    font: Arial 10 bold
+    fill: "#DEEBF7"
+    border: {top: thin, bottom: thin}
+
+  # Yellow background — for cells needing attention
+  warning:
+    fill: "#FFFF00"
+
+  # Bold text only — for emphasizing individual cells
+  bold:
+    font: Arial 10 bold
