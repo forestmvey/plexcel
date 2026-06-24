@@ -156,7 +156,7 @@ def coerce_value(value):
             return datetime.strptime(v, fmt)
         except ValueError:
             continue
-    return value
+    return value.replace('\\n', '\n')
 
 # --- Column auto-fit ---
 
